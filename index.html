@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8f4ec">
+<title>Bárbara &amp; Esteban · Nuestra boda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#495d60;--deep:#3e5b56;--green:#8fa385;--paper:#fcfaf3;--muted:#667575;--rose:#ecd4d7;--blue:#dbe7f1;--gold:#bba47d;--border:#c7c2a9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#eeeae0;font-family:'Cormorant Garamond',Georgia,serif;font-size:20px}button,input,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit}button{cursor:pointer}img{max-width:100%;display:block}p{line-height:1.43}h1,h2,h3,p{margin-top:0}
+#app{max-width:580px;min-height:100vh;margin:auto;overflow:hidden;position:relative;background:#faf8f0 url('assets/imagen-64162ffa05b8.webp') repeat center top;background-size:1050px 1050px;box-shadow:0 8px 55px #31382d1b}
+.wrap{padding:0 33px}.center{text-align:center}.section{padding:42px 20px 38px;position:relative}.section h2{font-family:'Great Vibes',cursive;font-size:clamp(43px,10vw,64px);font-weight:400;line-height:1.1;margin:4px 0 14px;color:#607c77}.micro{font-family:'DM Sans',sans-serif;letter-spacing:.21em;text-transform:uppercase;font-size:10px;font-weight:600;color:#83908c}.text{font-size:21px;line-height:1.4;max-width:420px;margin:0 auto}.mini-text{font-size:18px;line-height:1.4}.flourish{color:var(--gold);text-align:center;letter-spacing:.3em;font-size:23px;margin:7px 0 19px}.rule{height:21px;object-fit:contain;width:80%;margin:25px auto}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;background:#70856d;color:white;padding:10px 27px;border:1px solid #70856d;border-radius:24px;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:600;transition:.2s ease}.btn:hover{background:#4b695f}.btn:disabled{cursor:not-allowed;opacity:.5}.btn.rose{background:#a27983;border-color:#a27983}.muted{color:#667371}.hidden{display:none!important}
+/* Portada: foto y reproductor inspirados en la pagina original de Canva */
+.hero{position:relative;padding-bottom:6px;text-align:center}.hero-photo{height:325px;width:100%;object-fit:cover;object-position:center 47%;box-shadow:0 5px 16px #34402b26}.hero-mark{width:112px;margin:-57px auto 0;position:relative;z-index:1;filter:drop-shadow(0 1px 1px #fff)}.top-plate{margin:5px 30px 0}.top-script{font-family:'Great Vibes',cursive;font-size:38px;color:#536c75;margin:10px 0 0}.music{margin:2px auto 15px;display:flex;align-items:center;justify-content:center;gap:12px}.play-button{width:42px;height:42px;border:1px solid #aaa9a1;background:#f9f6f0;border-radius:100%;color:#5b6b70;display:flex;align-items:center;justify-content:center;font-size:20px}.music-label{text-align:left;font:10px 'DM Sans',sans-serif;letter-spacing:.15em;text-transform:uppercase}.music-label strong{display:block;font-weight:500;margin-top:3px;font-size:9px;color:#798986;text-transform:none;letter-spacing:0}.hero h1{color:#6d898a;font:500 clamp(24px,7vw,37px) 'Cormorant Garamond',Georgia,serif;letter-spacing:.18em;margin:16px 0 11px}.hero .love-story{font:19px/1.35 'Cormorant Garamond',serif;padding:0 28px;max-width:425px;margin:auto}
+/* Personalizacion */
+.personal{padding:27px 22px 13px;text-align:center}.greet-frame{max-width:445px;background:#fffffff0;border:1px solid #d5cab0;box-shadow:0 8px 20px #917c5012;margin:auto;padding:21px 16px 23px;border-radius:90px 90px 9px 9px}.greet-frame h2{font:400 42px/1.1 'Great Vibes',cursive;color:#667f8a;margin:12px 0 5px}.greet-frame .saludo-sub{font-size:18px;margin:8px 0}.greet-frame .cupos{font:600 11px/1.6 'DM Sans',sans-serif;letter-spacing:.08em;color:#798984}
+.date-panel{position:relative;margin:5px auto 10px;max-width:395px;text-align:center;padding:22px 16px 20px;border:2px solid #b8cad2;border-radius:60px 60px 12px 12px;background:#f9f7ecdd;outline:1px solid #ded5be;outline-offset:5px}.date-panel .month{font-family:'DM Sans',sans-serif;letter-spacing:.3em;font-size:13px;font-weight:700;color:#78909b}.date-line{display:flex;justify-content:center;align-items:center;gap:22px;font-size:17px}.date-line b{font:600 76px/.9 'Cormorant Garamond',serif;color:#536b72}.date-panel .year{font-family:'DM Sans',sans-serif;letter-spacing:.2em;font-size:13px}.countdown{display:flex;max-width:330px;margin:15px auto 0;justify-content:space-around;gap:7px}.countdown div{width:25%;font-family:'DM Sans',sans-serif}.countdown b{display:block;font:500 26px 'Cormorant Garamond',serif}.countdown small{font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.lavender-arch{width:170px;position:absolute;top:-26px;right:-38px;pointer-events:none}.blue-branch{position:absolute;width:150px;pointer-events:none;z-index:0}.blue-branch.left{left:-65px;top:28px;transform:rotate(-15deg)}.blue-branch.right{right:-55px;bottom:10px;transform:scaleX(-1) rotate(7deg)}.section>*:not(.blue-branch){position:relative;z-index:1}
+.place-intro{font-family:'Great Vibes',cursive;color:#718b8a;font-size:38px;line-height:1.1;margin:0 auto 15px}.place-card{position:relative;max-width:390px;margin:25px auto 32px;text-align:center;background:#dce4d5;border:2px solid #b2c1ae;border-radius:46% 46% 8px 8px / 17% 17% 8px 8px;padding:31px 16px 25px;box-shadow:0 9px 16px #596e5c1a}.place-card.reception{background:#d6ddc7;border-color:#a2af9a}.place-card:after{content:"";position:absolute;inset:8px;border:1px solid #e8eee5;border-radius:inherit;pointer-events:none}.place-card img{width:115px;height:62px;object-fit:contain;margin:0 auto 4px}.place-card h3{font:400 43px 'Great Vibes',cursive;color:#526b6d;margin:0 0 4px}.place-card .place-name{font-size:23px;font-weight:600;margin:0}.place-card .place-location{font-size:17px;margin:4px auto 7px;max-width:280px}.place-card .place-time{font:700 14px 'DM Sans',sans-serif;letter-spacing:.1em;margin:10px auto 16px}.place-card .btn{background:#76936c;border-color:#76936c;min-height:37px}
+.dress-illustration{height:224px;width:176px;object-fit:contain;margin:4px auto 10px}.dress-note{max-width:335px;font-size:18px;margin:10px auto 0}.gift-section{min-height:275px;padding-top:20px}.gift-decor{width:200px;margin:0 auto -38px;opacity:.9}.gift-inner{max-width:400px;margin:auto;padding:38px 23px 27px;border:2px solid #c4cfdb;background:#f5f4ebd9;border-radius:54px 54px 11px 11px}.gift-inner h2{margin-bottom:0}.gift-code{font:700 18px 'DM Sans',sans-serif;letter-spacing:.16em;margin:18px 0 15px}.gift-inner .mini-text{margin:4px auto}.gift-decor-right{width:130px;position:absolute;right:-35px;top:45px;opacity:.65;transform:rotate(9deg)}
+.rsvp{margin:15px 13px 35px;padding:28px 17px 23px;background:#f2e0e0b5;border:2px solid #e4c7c8;border-radius:24px;box-shadow:0 5px 13px #86565912}.rsvp h2{color:#9d7d89}.rsvp .deadline{margin:5px auto 12px;font-size:18px}.rsvp .choices{text-align:left;max-width:390px;margin:auto}.choice{display:flex;align-items:center;gap:11px;padding:12px 14px;margin:7px 0;background:#fff9f6db;border-radius:11px;border:1px solid #eadbd6;font:15px 'DM Sans',sans-serif;color:#4b655f}.choice input{appearance:none;width:21px;height:21px;border:1.5px solid #9b9d89;border-radius:5px;background:white;flex-shrink:0}.choice input:checked{background:#79917d;border-color:#79917d;box-shadow:inset 0 0 0 4px white}.rsvp textarea{width:100%;margin:12px auto;padding:12px;min-height:73px;resize:vertical;font:14px 'DM Sans',sans-serif;border:1px solid #d4ccc3;border-radius:9px;background:#fffdfa;color:#495d60}.rsvp textarea:focus,.choice input:focus-visible{outline:2px solid #7e9b91;outline-offset:2px}.rsvp .rsvp-state{font:600 13px 'DM Sans',sans-serif;color:#61766f;margin:5px auto 13px;line-height:1.5}.response-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px auto 9px}.btn.decline{background:transparent;border-color:#a58b89;color:#956f72}.success{padding:12px 13px;border-radius:10px;background:#e6efe8;color:#47654c;font:13px/1.5 'DM Sans',sans-serif;margin:13px auto;max-width:380px}.error{padding:12px;background:#ffeded;border-radius:9px;color:#8e4848;font:13px 'DM Sans',sans-serif}.closed{background:#fff9f5;border:1px solid #d9bfc0;border-radius:12px;padding:18px;max-width:370px;margin:15px auto;font:14px/1.6 'DM Sans',sans-serif}.closed b{display:block;font-size:15px;color:#9d7275;margin-bottom:6px}
+/* Fotos finales verticales: MOSTRAR IMAGEN COMPLETA, sin recortar caras ni anillo. */
+.photo-gallery{max-width:332px;margin:12px auto 28px;padding:0 18px}
+.photo-gallery img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;box-sizing:border-box;box-shadow:2px 3px 9px #8f8a781c;border:9px solid #fff;border-bottom-width:20px;margin:0 auto 22px;transform:rotate(-2deg);background:#fff}
+.photo-gallery img:nth-child(2){transform:rotate(2deg);height:auto}
+.photo-gallery img:nth-child(3){transform:rotate(-1.5deg);height:auto}.footer{padding:20px 15px 52px;text-align:center}.footer h2{font:400 47px 'Great Vibes',cursive;color:#6b858b;margin:0 0 4px}.footer-mark{width:90px;margin:0 auto 6px}.footer .quote{font-size:20px;font-style:italic;max-width:345px;margin:3px auto 21px}.flower-over{position:absolute;width:150px;left:-35px;top:-32px;pointer-events:none;opacity:.8}.loading{min-height:70px;font:16px 'DM Sans',sans-serif;color:#6d7c80;text-align:center;padding:24px 10px}
+/* Animacion de sobre: usa el mismo sobre del Canva */
+.open-cover{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;z-index:100;background:#f7f3e8 url('assets/imagen-64162ffa05b8.webp') repeat center top;background-size:1050px 1050px;transition:opacity .55s ease,visibility .55s}.open-cover.is-open{opacity:0;visibility:hidden;pointer-events:none}.open-card{width:min(92vw,510px);text-align:center;padding:15px 20px}.open-card .micro{margin:7px 0 2px}.open-card h2{font:400 56px 'Great Vibes',cursive;color:#718a8f;margin:8px 0}.envelope-tap{border:0;background:none;max-width:390px;width:100%;margin:auto;padding:0;transition:transform .45s}.envelope-tap img{filter:drop-shadow(0 8px 12px #776d5a33)}.envelope-tap:hover{transform:translateY(-7px)}.open-hint{font:12px 'DM Sans',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#8b7b6a;margin-top:12px}.open-card .flowers{max-width:235px;margin:auto}
+@media(min-width:600px){#app{margin:24px auto}.hero-photo{height:365px}.wrap{padding:0 50px}.section{padding-left:38px;padding-right:38px}}@media(max-width:360px){.section{padding-left:14px;padding-right:14px}.hero-photo{height:274px}.greet-frame h2{font-size:35px}.place-card h3{font-size:36px}.dress-illustration{height:190px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* V5 · Fondo de papel continuo y composición botánica armonizada */
+#app{background-color:#faf7f0;background-position:center top;background-repeat:repeat;background-size:1050px 1050px}
+.open-cover{background-position:center top;background-repeat:repeat;background-size:1050px 1050px}
+.section{isolation:isolate}
+.section h2{letter-spacing:.015em}
+.rule{width:65%;height:17px;margin:27px auto 22px;opacity:.75}
+.date-panel{isolation:isolate;margin-top:28px;margin-bottom:15px}
+.date-bouquet{position:absolute;width:116px;height:auto;top:-29px;right:-9px;transform:rotate(9deg);opacity:.92;pointer-events:none;z-index:3;filter:drop-shadow(0 2px 4px #8f897221)}
+.date-panel .month,.date-panel .date-line,.date-panel .micro{position:relative;z-index:4}
+.blue-branch{width:116px!important;height:auto;z-index:2!important;opacity:.67;filter:drop-shadow(0 2px 2px #70887816)}
+.blue-branch.left{left:-28px;top:71px;transform:rotate(-30deg)}
+.blue-branch.right{right:-28px;bottom:72px;transform:scaleX(-1) rotate(-25deg)}
+.place-card{z-index:3!important;margin-top:34px;margin-bottom:38px}
+.place-card .flourish{font-size:17px;margin:3px 0 13px;color:#b0a386}
+.gift-section{padding-top:32px!important}
+.gift-decor{width:165px;opacity:.94;margin-bottom:-31px;filter:drop-shadow(0 2px 3px #8b8e761b)}
+.gift-decor-right{width:91px;right:-27px;top:205px;opacity:.32;transform:rotate(-17deg);pointer-events:none}
+.gift-inner{position:relative;z-index:2}
+.footer>img:first-child{opacity:.92}
+.open-card .flowers{max-width:192px;opacity:.86;margin-top:7px}
+@media(max-width:420px){
+ .blue-branch{width:99px!important;opacity:.56}
+ .blue-branch.left{left:-22px;top:80px}
+ .blue-branch.right{right:-22px;bottom:72px}
+ .date-bouquet{width:102px;top:-25px;right:-7px}
+ .place-card{margin-top:27px;margin-bottom:30px}
+ .gift-decor{width:147px}
+}
+</style>
+</head>
+<body>
+<div class="open-cover" id="openCover" aria-label="Abrir invitación">
+ <div class="open-card"><div class="micro">Una correspondencia muy especial</div><h2>Para ti, con amor</h2>
+  <button class="envelope-tap" id="openEnvelope" aria-label="Abrir el sobre y la invitación"><img src="assets/imagen-bd60d25c64fe.webp" alt="Sobre antiguo de Bárbara y Esteban con sello de lacre"></button>
+  <p class="open-hint">✧ Toca el sobre para descubrir nuestra invitación ✧</p><img class="flowers" src="assets/imagen-79a7b661ef8f.webp" alt=""></div>
+</div>
+<div id="app">
+ <header class="hero">
+  <img class="hero-photo" src="assets/imagen-63b8cb205750.webp" alt="Bárbara y Esteban juntos frente a una pared roja">
+  <img class="hero-mark" src="assets/imagen-2a9ee2a6671c.webp" alt="Monograma Bárbara y Esteban">
+  <div class="top-plate">
+   <h2 class="top-script">Bárbara &amp; Esteban</h2>
+   <div class="music" id="musicBox"><button class="play-button" id="musicToggle" aria-label="Reproducir o pausar la música">▶</button><div class="music-label">Dale play a la música<strong id="musicStatus">Nuestra canción</strong></div></div>
+   <audio id="musicAudio" preload="metadata" src="assets/musica-desde-057.mp3"></audio>
+   <h1>¡NOS VAMOS A CASAR!</h1>
+   <p class="love-story">Hace tres años comenzó la historia más bonita de nuestras vidas. Hoy queremos celebrar el inicio de un nuevo capítulo y nos haría muy felices que nos acompañaras en el día en que diremos «Sí, acepto».</p>
+  </div>
+ </header>
+ <section class="personal wrap" aria-label="Invitación personalizada"><div class="greet-frame"><div class="micro">Esta invitación es especialmente para</div><h2 id="saludo">Cargando...</h2><p class="saludo-sub" id="mensajePersonal"></p><p class="cupos" id="cuposMensaje"></p></div></section>
+ <section class="section center" aria-label="Fecha de nuestra boda">
+  <h2>Nuestra boda</h2><div class="date-panel"><img class="date-bouquet" src="assets/imagen-79a7b661ef8f.webp" alt="" aria-hidden="true"><div class="month">FEBRERO</div><div class="date-line"><span>Sábado</span><b>20</b><span>2027</span></div><div class="micro">¡Guarda esta fecha!</div></div>
+  <div class="micro" style="margin-top:26px">Faltan para el gran día</div><div class="countdown" id="countdown"><div><b id="days">—</b><small>Días</small></div><div><b id="hours">—</b><small>Horas</small></div><div><b id="minutes">—</b><small>Minutos</small></div><div><b id="seconds">—</b><small>Segundos</small></div></div>
+  <img class="rule" src="assets/imagen-c5e2e118b347.webp" alt="">
+  <div class="place-intro">¡Guarda los detalles<br>y la fecha para el gran día!</div>
+ </section>
+ <section class="section center" aria-label="Ceremonia y recepción" style="padding-top:5px">
+  <img src="assets/imagen-b3bd8ebe887e.webp" class="blue-branch left" alt=""><img src="assets/imagen-b3bd8ebe887e.webp" class="blue-branch right" alt="">
+  <div class="place-card"><div class="micro">El día más esperado</div><h3>Ceremonia</h3><div class="flourish">♧</div><p class="place-name" id="iglesia">Iglesia de San Ignacio</p><p class="place-location" id="dirIglesia">Padre Alonso de Ovalle 1494, Santiago</p><p class="place-time" id="horaIglesia">17:30 HRS</p><a class="btn" id="mapaIglesia" target="_blank" rel="noopener noreferrer">Ver mapa ↗</a></div>
+  <div class="place-card reception"><div class="micro">Brindemos por el amor</div><h3>Recepción</h3><div class="flourish">♧</div><p class="place-name" id="recepcion">Casona San Ignacio</p><p class="place-location">Patrimonio histórico nacional</p><p class="place-location" id="dirRecepcion">Caupolicán 8611, Quilicura</p><p class="place-time" id="horaRecepcion">19:30 HRS</p><a class="btn" id="mapaRecepcion" target="_blank" rel="noopener noreferrer">Ver mapa ↗</a></div>
+ </section>
+ <section class="section center" aria-label="Código de vestimenta" style="padding-top:0">
+  <h2>Dress code</h2><div class="micro" id="vestimenta">Etiqueta formal</div><img class="dress-illustration" src="assets/imagen-a5f8ee0d40a3.webp" alt="Ilustración de pareja vestida de etiqueta">
+  <p class="dress-note">La única regla es sencilla:<br><strong>El blanco y sus tonalidades es exclusivo de la novia.</strong><br>Todo lo demás… ¡sorpréndenos con tu mejor look!</p><img class="rule" src="assets/imagen-c5e2e118b347.webp" alt="">
+ </section>
+ <section class="section center gift-section" aria-label="Obsequios" style="padding-top:9px">
+  <img class="gift-decor" src="assets/imagen-79a7b661ef8f.webp" alt=""><img src="assets/imagen-b3bd8ebe887e.webp" class="gift-decor-right" alt="">
+  <div class="gift-inner"><h2>Obsequios</h2><p class="mini-text">Lo único que realmente deseamos es compartir este día contigo. Si quieres hacernos un regalo para acompañarnos en esta nueva etapa, hemos preparado una lista de novios.</p><div class="gift-code" id="codigoRegalo">Código: 17794426</div><a class="btn" href="#" id="btnRegalos" target="_blank" rel="noopener noreferrer">Ver lista de novios ↗</a><div id="regalosAviso" class="mini-text hidden">Consulta nuestra lista de novios con el código indicado.</div></div>
+ </section>
+ <section class="section center" aria-label="Confirmar asistencia" style="padding:15px 15px 0">
+  <img class="rule" src="assets/imagen-c5e2e118b347.webp" alt=""><div class="rsvp"><h2>Confirmar asistencia</h2><p class="deadline" id="deadline">Por favor confirma tu asistencia</p><div class="micro" id="invitadosTitulo">Personas incluidas en esta invitación</div>
+   <div class="loading" id="loading">Estamos preparando tu invitación…</div>
+   <div id="rsvpBody" class="hidden"><div id="rsvpState" class="rsvp-state"></div><form id="rsvpForm"><div id="choices" class="choices"></div><textarea id="restricciones" maxlength="500" placeholder="¿Alguna restricción alimentaria? (opcional)" aria-label="Restricciones alimentarias"></textarea><div class="response-row"><button class="btn" id="btnConfirmar" type="submit">Confirmar asistencia</button><button class="btn decline" type="button" id="btnNo">No podremos asistir</button></div></form><div id="closedBox" class="closed hidden"><b>Las confirmaciones están cerradas</b><span id="closedText"></span></div><div id="resultado" role="status" aria-live="polite"></div></div>
+  </div>
+ </section>
+ <section class="section center" style="padding-top:2px" aria-label="Recuerdos"><div class="mini-text">Amor es solo una palabra, hasta que llega alguien y le da sentido.</div><div class="flourish">✦</div><div class="photo-gallery"><img src="assets/imagen-179a98e0afe9.webp" alt="Nuestro compromiso junto al mar" loading="lazy"><img src="assets/imagen-d2d75a64a527.webp" alt="Nuestro anillo de compromiso" loading="lazy"><img src="assets/imagen-47ac4e773b44.webp" alt="Felices juntos el día del compromiso" loading="lazy"></div></section>
+ <footer class="footer"><img src="assets/imagen-79a7b661ef8f.webp" style="width:230px;margin:0 auto 3px" alt=""><div class="micro">Con cariño</div><h2>Bárbara &amp; Esteban</h2><img class="footer-mark" src="assets/imagen-2a9ee2a6671c.webp" alt="Monograma B y E"><p class="quote">«Hay una teoría que dice que si algo está destinado a estar en tu vida, lo vas a conocer dos veces».</p><div class="micro">20 · 02 · 2027</div></footer>
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>
