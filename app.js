@@ -32,10 +32,33 @@ function mostrar(datos){
 }
 // Quita "Querido/a/os/as" del saludo de la planilla y pone mayúscula inicial.
 function saludoLimpio(inv){let s=String(inv.saludo||'').trim().replace(/^quer(?:id[oa]s?)\s+/i,'').trim();if(!s){const n=inv.invitados||[];s=n.length>1?n.slice(0,-1).join(', ')+' y '+n[n.length-1]:(n[0]||'');}return s.charAt(0).toLocaleUpperCase('es')+s.slice(1);}
-function errorCarga(err){$('loading').className='error';$('loading').textContent=err?.message||'No pudimos abrir la invitación. Contacta a los novios.';}
+function errorCarga(err){
+ const msg=(err&&err.message)||'No pudimos abrir la invitación. Contacta a los novios.';
+ texto('saludo','¡Ups!');texto('mensajePersonal',msg);texto('cuposMensaje','');
+ const l=$('loading');l.className='error';l.replaceChildren(document.createTextNode(msg+' '));
+ const b=document.createElement('button');b.type='button';b.className='btn';b.style.marginTop='10px';b.textContent='Reintentar';b.addEventListener('click',()=>location.reload());l.append(document.createElement('br'),b);
+}
 // JSONP solo para LECTURA: ContentService redirige a googleusercontent.com, sin CORS.
 // El token identifica un solo grupo; el backend NUNCA devuelve toda la lista.
-function leerInvitacion(){return new Promise((resolve,reject)=>{
+// LECTURA: primero fetch (CORS, no lo bloquean los navegadores de celular); si falla, JSONP como respaldo.
+async function leerInvitacion(){
+ if(!API || !/\/exec$/.test(API))throw new Error('Configura apiUrl en config.js con tu enlace /exec.');
+ try{return await leerConFetch();}
+ catch(e){if(e&&e.servidor)throw e;return await leerConJsonp();}
+}
+async function leerConFetch(){
+ const url=new URL(API);url.searchParams.set('accion','leer');url.searchParams.set('i',TOKEN);url.searchParams.set('callback','cb');url.searchParams.set('_',String(Date.now()));
+ const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),15000);
+ try{
+  const r=await fetch(url.toString(),{method:'GET',mode:'cors',credentials:'omit',redirect:'follow',cache:'no-store',signal:ctl.signal});
+  const txt=(await r.text()).trim();
+  const m=txt.match(/^cb\(([\s\S]*)\);?$/);if(!m)throw new Error('respuesta no válida');
+  const res=JSON.parse(m[1]);
+  if(res&&res.ok&&res.data)return res.data;
+  const err=new Error(res&&res.error||'No se pudo consultar la invitación.');err.servidor=true;throw err;
+ }finally{clearTimeout(t);}
+}
+function leerConJsonp(){return new Promise((resolve,reject)=>{
  if(!API || !/\/exec$/.test(API))return reject(new Error('Configura apiUrl en config.js con tu enlace /exec.'));
  const cb='__boda_'+Math.random().toString(36).slice(2)+Date.now().toString(36);let done=false;
  const script=document.createElement('script');let timer;
