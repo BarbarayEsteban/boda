@@ -70,6 +70,8 @@ async function enviar(asistira){
   if(DEMO){await new Promise(r=>setTimeout(r,450));INVITACION.estado=asistira?'CONFIRMADA':'NO_ASISTE';mensaje('Modo demostración: no se modificó Google Sheets.');return;}
   const payload={token:TOKEN,respuesta:asistira?'SI':'NO',indices:asistira?indices:[],restricciones:$('restricciones').value};
   const actualizado=await guardarEnSheets(payload);INVITACION=actualizado.invitacion;CORTE_CERRADO=!actualizado.rsvpAbierto;
+  // Refleja en pantalla lo que quedó guardado en Sheets (por ejemplo, desmarca todo si respondió que no).
+  [...$('choices').querySelectorAll('input')].forEach(i=>i.checked=INVITACION.indicesConfirmados.includes(Number(i.value)));
   mensaje(asistira?'¡Asistencia registrada correctamente!':'Registramos que no asistirás.');
   texto('rsvpState',asistira?'¡Confirmación recibida! Puedes modificarla hasta la fecha de corte.':'Registramos tu respuesta.');
  }catch(e){mensaje(e?.message||'No fue posible guardar tu respuesta.',true);}finally{BUSY=false;habilitarBotones(true);limitarSeleccion();}
@@ -78,6 +80,7 @@ $('rsvpForm').addEventListener('submit',e=>{e.preventDefault();enviar(true);});$
 const audioBoda=$('musicAudio');audioBoda.loop=true;
 function actualizarMusica(sonando){$('musicToggle').textContent=sonando?'Ⅱ':'▶';texto('musicStatus',sonando?'Nuestra canción · desde 0:57':'Toca Play para escuchar nuestra canción');}
 function reproducirMusica(){const p=audioBoda.play();if(p?.then)p.then(()=>actualizarMusica(true)).catch(()=>actualizarMusica(false));}
+document.body.style.overflow='hidden'; // la página no se desplaza detrás del sobre
 $('openEnvelope').addEventListener('click',()=>{$('openCover').classList.add('is-open');document.body.style.overflow='';reproducirMusica();});
 $('musicToggle').addEventListener('click',()=>audioBoda.paused?reproducirMusica():(audioBoda.pause(),actualizarMusica(false)));
 audioBoda.addEventListener('pause',()=>actualizarMusica(false));audioBoda.addEventListener('playing',()=>actualizarMusica(true));
