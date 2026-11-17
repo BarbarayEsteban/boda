@@ -27,7 +27,7 @@ function mostrar(datos){
  const estado=INVITACION.estado;
  texto('rsvpState',estado==='CONFIRMADA'?'¡Ya recibimos tu confirmación! Puedes modificarla hasta la fecha de cierre.':estado==='NO_ASISTE'?'Nos informaste que no asistirás. Puedes cambiar tu respuesta hasta la fecha de cierre.':'Marca a las personas que asistirán y confirma tu respuesta.');
  $('loading').classList.add('hidden');$('rsvpBody').classList.remove('hidden');
- if(CORTE_CERRADO){texto('deadline','El plazo para confirmar terminó el '+datos.fechaCorteLegible+'.');$('invitadosTitulo').classList.add('hidden');$('rsvpForm').classList.add('hidden');$('closedBox').classList.remove('hidden');texto('closedText',(estado==='CONFIRMADA'?'Tu confirmación quedó registrada.':estado==='NO_ASISTE'?'Registramos que no asistirás.':'No tenemos una respuesta registrada para esta invitación.')+' Si necesitas realizar algún cambio, contacta directamente a los novios.');resumenCerrado(estado);}
+ if(CORTE_CERRADO){texto('deadline','El plazo para confirmar terminó el '+datos.fechaCorteLegible+'.');$('invitadosTitulo').classList.add('hidden');$('rsvpForm').classList.add('hidden');$('closedBox').classList.remove('hidden');texto('closedText',(estado==='CONFIRMADA'?'Tu confirmación quedó registrada.':estado==='NO_ASISTE'?(INVITACION.cupos===1?'Registramos que no asistirás.':'Registramos que no asistirán.'):'')+(estado==='CONFIRMADA'||estado==='NO_ASISTE'?' Si necesitas realizar algún cambio, contacta directamente a los novios.':''));resumenCerrado(estado);}
  else{$('rsvpForm').classList.remove('hidden');$('closedBox').classList.add('hidden');limitarSeleccion();}
 }
 // Quita "Querido/a/os/as" del saludo de la planilla y pone mayúscula inicial.
@@ -35,7 +35,13 @@ function saludoLimpio(inv){let s=String(inv.saludo||'').trim().replace(/^quer(?:
 // Con el plazo cerrado: muestra lo que quedó registrado en la planilla.
 function resumenCerrado(estado){
  const box=$('closedSummary');box.replaceChildren();
- if(estado!=='CONFIRMADA'&&estado!=='NO_ASISTE'){box.classList.add('hidden');texto('rsvpState','');return;}
+ if(estado!=='CONFIRMADA'&&estado!=='NO_ASISTE'){
+  const uno=INVITACION.cupos===1;
+  box.classList.remove('hidden');texto('rsvpState','');$('closedText').classList.add('hidden');
+  const p1=document.createElement('p');p1.textContent=uno?'Como no recibimos tu respuesta a tiempo, entendemos que esta vez no podrás acompañarnos.':'Como no recibimos su respuesta a tiempo, entendemos que esta vez no podrán acompañarnos.';
+  const p2=document.createElement('p');p2.className='closed-summary-warm';p2.textContent=uno?'Te enviamos un abrazo enorme y esperamos celebrar contigo muy pronto.':'Les enviamos un abrazo enorme y esperamos celebrar con ustedes muy pronto.';
+  const p3=document.createElement('p');p3.className='closed-summary-note';p3.textContent='Si crees que se trata de un error, escríbenos directamente.';
+  box.style.borderTop='0';box.style.marginTop='4px';box.append(p1,p2,p3);return;}
  box.classList.remove('hidden');texto('rsvpState','');
  const h=document.createElement('div');h.className='closed-summary-title';h.textContent='Tu respuesta registrada';box.append(h);
  if(estado==='NO_ASISTE'){const p=document.createElement('p');p.textContent=INVITACION.cupos===1?'No podrás asistir.':'No podrán asistir.';box.append(p);return;}
