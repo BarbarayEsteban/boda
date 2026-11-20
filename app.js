@@ -4,6 +4,8 @@ const TOKEN = new URLSearchParams(location.search).get('i') || '';
 const DEMO = new URLSearchParams(location.search).get('demo') === '1';
 const $ = id => document.getElementById(id);
 let INVITACION=null, CORTE_CERRADO=false, BUSY=false;
+// Lista de novios (Novios París). Se usa si la planilla no define otra.
+const URL_REGALOS='https://www.noviosparis.cl/home/couple-catalog/17794426';
 const API = (CFG.apiUrl||'').replace(/\/$/,'');
 function mensaje(txt,fallo=false){const c=$('resultado');c.className=fallo?'error':'success';c.textContent=txt;}
 function mapa(dir){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(dir);}
@@ -18,7 +20,7 @@ function mostrar(datos){
  texto('cuposMensaje','Hemos reservado '+INVITACION.cupos+(INVITACION.cupos===1?' lugar especialmente para ti.':' lugares especialmente para ustedes.'));
  ['iglesia','recepcion'].forEach(id=>texto(id,e[id]));texto('dirIglesia',e.direccionIglesia);texto('dirRecepcion',e.direccionRecepcion);texto('horaIglesia',e.horaIglesia);texto('horaRecepcion',e.horaRecepcion);texto('vestimenta',e.dressCode);texto('codigoRegalo','Código: '+e.codigoRegalo);
  $('mapaIglesia').href=mapa(e.direccionIglesia);$('mapaRecepcion').href=mapa(e.direccionRecepcion);
- if(e.urlRegalos&&/^https:\/\//.test(e.urlRegalos)){$('btnRegalos').href=e.urlRegalos;}else{$('btnRegalos').classList.add('hidden');$('regalosAviso').classList.remove('hidden');}
+ const urlReg=(e.urlRegalos&&/^https:\/\//.test(e.urlRegalos))?e.urlRegalos:URL_REGALOS;if(urlReg){$('btnRegalos').href=urlReg;$('btnRegalos').classList.remove('hidden');$('regalosAviso').classList.add('hidden');}else{$('btnRegalos').classList.add('hidden');$('regalosAviso').classList.remove('hidden');}
  texto('deadline','Confirma tu asistencia hasta el '+datos.fechaCorteLegible+'.');contador(e.fechaISO);
  const cont=$('choices');cont.replaceChildren();
  INVITACION.invitados.forEach((nom,idx)=>{const fila=document.createElement('label');fila.className='choice';const input=document.createElement('input');input.type='checkbox';input.value=String(idx);input.checked=INVITACION.indicesConfirmados.includes(idx);input.addEventListener('change',limitarSeleccion);const span=document.createElement('span');span.textContent=nom;fila.append(input,span);cont.append(fila);});
