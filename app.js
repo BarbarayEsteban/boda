@@ -29,7 +29,7 @@ function mostrar(datos){
  const n=INVITACION.invitados.length,c=INVITACION.cupos;
  texto('invitadosTitulo',c===1?'Invitación individual':'Personas incluidas en esta invitación');
  const aviso=$('cuposAviso');
- aviso.textContent=c===1&&n===1?'Esta invitación es solo para ti: incluye 1 lugar.'
+ aviso.textContent=c===1&&n===1?''
   :c===1?'Esta invitación es para 1 persona: marca solo a quien asistirá.'
   :c<n?'Esta invitación incluye '+c+' lugares: marca hasta '+c+' personas.'
   :'';
