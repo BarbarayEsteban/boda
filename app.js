@@ -25,9 +25,18 @@ function mostrar(datos){
  const cont=$('choices');cont.replaceChildren();
  INVITACION.invitados.forEach((nom,idx)=>{const fila=document.createElement('label');fila.className='choice';const input=document.createElement('input');input.type='checkbox';input.value=String(idx);input.checked=INVITACION.indicesConfirmados.includes(idx);input.addEventListener('change',limitarSeleccion);const span=document.createElement('span');span.textContent=nom;fila.append(input,span);cont.append(fila);});
  $('restricciones').value=INVITACION.restricciones||'';
+ // Deja claro cuántas personas cubre la invitación.
+ const n=INVITACION.invitados.length,c=INVITACION.cupos;
+ texto('invitadosTitulo',c===1?'Invitación individual':'Personas incluidas en esta invitación');
+ const aviso=$('cuposAviso');
+ aviso.textContent=c===1&&n===1?'Esta invitación es solo para ti: incluye 1 lugar.'
+  :c===1?'Esta invitación es para 1 persona: marca solo a quien asistirá.'
+  :c<n?'Esta invitación incluye '+c+' lugares: marca hasta '+c+' personas.'
+  :'';
+ aviso.classList.toggle('hidden',!aviso.textContent);
  $('btnNo').textContent=INVITACION.cupos===1?'No podré asistir':'No podremos asistir';
  const estado=INVITACION.estado;
- texto('rsvpState',estado==='CONFIRMADA'?'¡Ya recibimos tu confirmación! Puedes modificarla hasta la fecha de cierre.':estado==='NO_ASISTE'?'Nos informaste que no asistirás. Puedes cambiar tu respuesta hasta la fecha de cierre.':'Marca a las personas que asistirán y confirma tu respuesta.');
+ texto('rsvpState',estado==='CONFIRMADA'?'¡Ya recibimos tu confirmación! Puedes modificarla hasta la fecha de cierre.':estado==='NO_ASISTE'?'Nos informaste que no asistirás. Puedes cambiar tu respuesta hasta la fecha de cierre.':(INVITACION.cupos===1&&INVITACION.invitados.length===1?'Marca tu nombre y confirma tu respuesta.':INVITACION.cupos===1?'Marca a la persona que asistirá y confirma tu respuesta.':'Marca a las personas que asistirán y confirma tu respuesta.'));
  $('loading').classList.add('hidden');$('rsvpBody').classList.remove('hidden');
  if(CORTE_CERRADO){texto('deadline','El plazo para confirmar terminó el '+datos.fechaCorteLegible+'.');$('invitadosTitulo').classList.add('hidden');$('rsvpForm').classList.add('hidden');$('closedBox').classList.remove('hidden');texto('closedText',(estado==='CONFIRMADA'?'Tu confirmación quedó registrada.':estado==='NO_ASISTE'?(INVITACION.cupos===1?'Registramos que no asistirás.':'Registramos que no asistirán.'):'')+(estado==='CONFIRMADA'||estado==='NO_ASISTE'?' Si necesitas realizar algún cambio, contacta directamente a los novios.':''));resumenCerrado(estado);}
  else{$('rsvpForm').classList.remove('hidden');$('closedBox').classList.add('hidden');limitarSeleccion();}

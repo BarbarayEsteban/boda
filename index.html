@@ -73,6 +73,8 @@
 .place-card:not(.reception){margin-top:22px}
 /* V7 · Perritos corriendo (animación con fondo transparente) */
 .pets-run{padding:4px 20px 0;}.pets-end{padding:26px 0 0;text-align:center}.pets-run img{width:100%;max-width:400px;height:auto;margin:0 auto}
+/* V10 · Aviso de cupos en la confirmación */
+.cupos-aviso{max-width:360px;margin:0 auto 12px;padding:9px 14px;border:1px dashed #d9bfc0;border-radius:10px;background:#fffaf7;font:600 13px/1.5 'DM Sans',sans-serif;color:#9d7275;text-align:center}
 /* V9 · Resumen de la respuesta con el plazo cerrado */
 .closed-summary{margin-top:14px;padding-top:12px;border-top:1px solid #e3cfcf;text-align:center}
 .closed-summary-title{font:600 10px 'DM Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9d7275;margin:0 -.18em 8px 0}
@@ -163,13 +165,13 @@ p{line-height:1.55}
  <section class="section center" aria-label="Confirmar asistencia" style="padding:15px 15px 0">
   <img class="rule" src="assets/imagen-c5e2e118b347.webp" alt=""><div class="rsvp"><h2>Confirmar asistencia</h2><p class="deadline" id="deadline">Por favor confirma tu asistencia</p><div class="micro" id="invitadosTitulo">Personas incluidas en esta invitación</div>
    <div class="loading" id="loading">Estamos preparando tu invitación…</div>
-   <div id="rsvpBody" class="hidden"><div id="rsvpState" class="rsvp-state"></div><form id="rsvpForm"><div id="choices" class="choices"></div><textarea id="restricciones" maxlength="500" placeholder="¿Alguna restricción alimentaria? (opcional)" aria-label="Restricciones alimentarias"></textarea><div class="response-row"><button class="btn" id="btnConfirmar" type="submit">Confirmar asistencia</button><button class="btn decline" type="button" id="btnNo">No podremos asistir</button></div></form><div id="closedBox" class="closed hidden"><b>Las confirmaciones están cerradas</b><span id="closedText"></span><div id="closedSummary" class="closed-summary hidden"></div></div><div id="resultado" role="status" aria-live="polite"></div></div>
+   <div id="rsvpBody" class="hidden"><div id="rsvpState" class="rsvp-state"></div><p id="cuposAviso" class="cupos-aviso hidden"></p><form id="rsvpForm"><div id="choices" class="choices"></div><textarea id="restricciones" maxlength="500" placeholder="¿Alguna restricción alimentaria? (opcional)" aria-label="Restricciones alimentarias"></textarea><div class="response-row"><button class="btn" id="btnConfirmar" type="submit">Confirmar asistencia</button><button class="btn decline" type="button" id="btnNo">No podremos asistir</button></div></form><div id="closedBox" class="closed hidden"><b>Las confirmaciones están cerradas</b><span id="closedText"></span><div id="closedSummary" class="closed-summary hidden"></div></div><div id="resultado" role="status" aria-live="polite"></div></div>
   </div>
  </section>
  <section class="section center" style="padding-top:2px" aria-label="Recuerdos"><div class="mini-text">«El amor es solo una palabra hasta que llega alguien y le da sentido».</div><div class="flourish">✦</div><div class="photo-gallery"><img src="assets/imagen-179a98e0afe9.webp" alt="Nuestro compromiso junto al mar" loading="lazy"><img src="assets/imagen-d2d75a64a527.webp" alt="Nuestro anillo de compromiso" loading="lazy"><img src="assets/imagen-47ac4e773b44.webp" alt="Felices juntos el día del compromiso" loading="lazy"></div></section>
  <footer class="footer"><img src="assets/imagen-79a7b661ef8f.webp" style="width:230px;margin:0 auto 3px" alt=""><div class="micro">Con cariño</div><h2>Bárbara &amp; Esteban</h2><img class="footer-mark" src="assets/imagen-2a9ee2a6671c.webp" alt="Monograma B y E"><p class="quote">«Hay una teoría que dice que si algo está destinado a estar en tu vida, lo vas a conocer dos veces».</p><div class="micro">20 · 02 · 2027</div>
 <div class="pets-run pets-end"><img src="assets/perritos-corriendo.webp?v=2" alt="Nuestros perritos corriendo" loading="lazy" width="520" height="256"></div></footer>
 </div>
-<script src="config.js?v=23"></script>
-<script src="app.js?v=23"></script>
+<script src="config.js?v=24"></script>
+<script src="app.js?v=24"></script>
 </body></html>
